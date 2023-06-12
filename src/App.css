@@ -23,6 +23,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+@font-face {
+  font-family: Sarito;
+  src: url("./assets/fonts/stratos-light-TRIAL-BF63c604a0abc54.otf");
+}
 
 .App-link {
   color: #61dafb;

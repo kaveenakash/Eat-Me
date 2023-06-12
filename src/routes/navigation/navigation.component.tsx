@@ -39,7 +39,7 @@ const Navigation: React.FC = () => {
 
   return (
     <Fragment>
-      <AppBar position="static" sx={{ backgroundColor: headerColor }}>
+      <AppBar position="fixed" sx={{ backgroundColor: headerColor}}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <img
             src={
@@ -50,7 +50,7 @@ const Navigation: React.FC = () => {
               height: "32px",
               marginLeft: isSmallScreenSize ? "0px" : "30px",
               width: "121px",
-              overflow: "hidden"
+              overflow: "hidden",
             }}
           />
           <Box>
