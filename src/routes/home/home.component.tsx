@@ -8,79 +8,177 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Hidden from "@mui/material/Hidden";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import SearchIcon from "@mui/icons-material/Search";
+import TelegramIcon from "@mui/icons-material/Telegram";
 
 const Home: React.FC = () => {
   const theme = useTheme();
-  const isScreenSmall = useMediaQuery(theme.breakpoints.down(960));
-  const isScreenMedium = useMediaQuery(theme.breakpoints.down(1025));
-  const isScreenLarge = useMediaQuery(theme.breakpoints.up(1201));
-  let imageWidth = "80%";
-  
-  const fullWidthStyles = {
-    width: "100%",
-    margin: 0,
-    padding: 0
+
+  const handleSearch = () => {
+    // Perform search functionality
   };
 
-  const containerStyles = {
-    backgroundColor: theme.palette.primary.main,
-    height: "500px",
-    display: "flex",
-    width: "100%"
-  };
-
-  let mainGridStyles = {
-    zIndex: 2,
-    marginLeft: "25%",
-    textAlign: "center",
-    marginRight: "25%",
-    marginTop: "6%",
-    width: "60%",
-    padding: "64px 16px 104px"
-  };
-
-  let headerStyles = {
-    fontSize: isScreenSmall ? "32px" : "40px",
-    color: "#fff",
-    lineHeight: "48px",
-    fontFamily: "Lato, sans-serif",
-    fontWeight: 800
-  };
-  if (isScreenLarge) {
-    imageWidth = "100%";
-    mainGridStyles = {
-      ...mainGridStyles,
-      marginTop: "5%",
-    };
-  }
-
-  if (isScreenSmall) {
-    mainGridStyles = {
-      ...mainGridStyles,
-      marginTop: "8%",
-      marginLeft: "0%",
-      marginRight: "0%",
-      textAlign: "start"
-    };
-  }
-  if (isScreenMedium) {
-    imageWidth = "55%";
-  }
-  if (isScreenSmall) {
-    imageWidth = "45%";
-    mainGridStyles = {
-      ...mainGridStyles,
-      marginTop: "8%",
-      marginLeft: "0%",
-      marginRight: "0%",
-      textAlign: "start"
-    };
-  }
   return (
     <Fragment>
       <Outlet />
-      <Box sx={fullWidthStyles} bgcolor={theme.palette.primary.main}>
-        {!isScreenSmall && (
+      <Box
+        sx={{
+          backgroundColor: theme.palette.primary.main,
+          height: "100%",
+          display: "flex",
+          width: "100%",
+          padding: "64px 16px 104px"
+        }}
+        bgcolor={theme.palette.primary.main}
+      >
+        <Box
+          sx={{
+            marginLeft: "25%",
+            marginRight: "25%",
+            // marginTop: "2%",
+            width: "100%",
+            padding: "64px 16px 104px"
+          }}
+        >
+          <Grid
+            container
+            sx={{
+              textAlign: "center"
+            }}
+            // alignItems="center"
+            justifyContent="center"
+            alignItems="center"
+            spacing={4}
+          >
+            <Grid item md={12} lg={9} xl={9}>
+              <Typography
+                sx={{
+                  fontSize: "40px",
+                  color: "#fff",
+                  lineHeight: "48px",
+                  fontFamily: "Lato, sans-serif",
+                  fontWeight: 800
+                }}
+              >
+                Restaurant food, takeaway and groceries.
+                <span style={{ color: theme.palette.secondary.main }}>
+                  {" "}
+                  Delivered.
+                </span>
+              </Typography>
+            </Grid>
+
+            <Grid item md={12} lg={9} xl={9}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  color: "#fff",
+                  paddingBottom: "16px",
+                  fontFamily: "plex-sans,sans-serif",
+                  fontWeight: 400,
+                  fontSize: "16px"
+                }}
+              >
+                Enter a postcode to see what we deliver
+              </Typography>
+              <TextField
+                placeholder="e.g.EC4R 3TE"
+                fullWidth
+                InputProps={{
+                  sx: {
+                    fontSize: "14px",
+                    "& input::-webkit-input-placeholder": {
+                      color: theme.palette.secondary.main
+                    },
+                    "& input::-moz-placeholder": {
+                      color: theme.palette.secondary.main
+                    },
+                    "& input::-ms-input-placeholder": {
+                      color: theme.palette.secondary.main
+                    },
+                    "& input::placeholder": {
+                      color: theme.palette.secondary.main
+                    }
+                  },
+                  startAdornment: (
+                    <TelegramIcon
+                      color="secondary"
+                      sx={{ marginRight: "2px" }}
+                    />
+                  ),
+                  endAdornment: (
+                    <Button
+                      color="secondary"
+                      sx={{
+                        minHeight: "56px",
+                        padding: "16px 40px",
+                        margin: "5px",
+                        textTransform: "none",
+                        fontWeight: 700,
+                        borderRadius: "100px",
+                        color: "#fff"
+                      }}
+                      variant="contained"
+                      onClick={handleSearch}
+                    >
+                      Search
+                    </Button>
+                  )
+                }}
+                sx={{
+                  backgroundColor: "#fff",
+                  minHeight: "48px",
+                  borderRadius: "100px",
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      border: "2px solid black",
+                      margin: "1px",
+                      borderRadius: "100px",
+                      padding: "8px" // Adjust the gap between the border and the text
+                    }
+                }}
+              />
+
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  color: "#fff",
+                  marginTop: "12px",
+                  fontFamily: "plex-sans,sans-serif",
+                  fontWeight: 400,
+                  fontSize: "14px"
+                }}
+              >
+                <span style={{ color: theme.palette.secondary.main }}>
+                  Log in
+                </span>{" "}
+                for your recent addresses.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Fragment>
+  );
+};
+
+export default Home;
+
+// const isScreenSmall = useMediaQuery(theme.breakpoints.down(960));
+// const isScreenMedium = useMediaQuery(theme.breakpoints.down(1025));
+// const isScreenLarge = useMediaQuery(theme.breakpoints.up(1201));
+// let imageWidth = "80%";
+
+// const fullWidthStyles = {
+//   width: "100%",
+//   margin: 0,
+//   padding: 0
+// };
+
+{
+  /* {!isScreenSmall && (
           <span
             style={{
               position: "absolute",
@@ -105,29 +203,5 @@ const Home: React.FC = () => {
               }}
             />
           </span>
-        )}
-        <Box sx={containerStyles}>
-          <Grid
-            container
-            direction="column"
-            sx={mainGridStyles}
-            justifyContent={isScreenSmall ? "start" : "center"}
-            // alignItems="end"
-          >
-            <Grid item md={12}>
-              <Typography sx={headerStyles}>
-                Restaurant food, takeaway and groceries.
-                <span style={{ color: theme.palette.secondary.main }}>
-                  Delivered.
-                </span>
-              </Typography>
-            </Grid>
-            <Grid item></Grid>
-          </Grid>
-        </Box>
-      </Box>
-    </Fragment>
-  );
-};
-
-export default Home;
+        )} */
+}

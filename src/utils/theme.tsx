@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-// Define your custom theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -8,6 +7,20 @@ const theme = createTheme({
     },
     secondary: {
       main: "#00ccbc"
+    }
+  },
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {}
+      }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          paddingRight: "0px"
+        }
+      }
     }
   },
   typography: {
