@@ -1,0 +1,71 @@
+/* .one {
+    position: relative;
+    overflow: hidden
+}
+
+.test {
+    
+    animation-name: example;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+} */
+
+/* .image-item{
+    width: 240px;
+    height: 120px;
+    margin-right:12px;
+} */
+
+
+/* @media screen and (min-width: 2000px) {
+    @keyframes example {
+        0% {
+            transform: translateX(500%);
+        }
+
+        100% {
+            transform: translateX(-500%);
+        }
+    }
+}
+
+@media screen and (max-width: 1999px) and (min-width: 1200px) {
+    @keyframes example {
+        0% {
+            transform: translateX(500%);
+        }
+
+        100% {
+            transform: translateX(-500%);
+        }
+    }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 600px) {
+    @keyframes example {
+        0% {
+            transform: translateX(500%);
+        }
+
+        100% {
+            transform: translateX(-500%);
+        }
+    }
+}
+
+@media screen and (max-width: 599px) {
+    @keyframes example {
+        0% {
+            transform: translateX(500%);
+        }
+
+        100% {
+            transform: translateX(-500%);
+        }
+    }
+} */

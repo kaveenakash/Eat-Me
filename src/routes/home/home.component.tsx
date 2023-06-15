@@ -4,7 +4,7 @@ import { Outlet, Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
+import Box, { BoxProps } from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Hidden from "@mui/material/Hidden";
@@ -13,11 +13,57 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
+import { Animate, AnimateKeyframes } from "react-simple-animate";
+
+// import "./home.css";
+
+function Item(props: BoxProps) {
+  const { sx, ...other } = props;
+  return (
+    <Box
+      sx={{
+        p: 1,
+        m: 1,
+        ...sx
+      }}
+      {...other}
+    />
+  );
+}
+
 const Home: React.FC = () => {
   const theme = useTheme();
 
   const handleSearch = () => {
     // Perform search functionality
+  };
+  const appear = {
+    from: 0,
+    to: 1,
+    attributeName: "opacity"
+  };
+
+  const leave = {
+    steps: [
+      {
+        style: {
+          transform: "translateX(0)"
+        }
+      },
+      {
+        duration: 1000,
+        style: {
+          transform: "translateX(300)",
+          height: 50
+        }
+      },
+      {
+        duration: 2000,
+        style: {
+          height: 0
+        }
+      }
+    ]
   };
 
   return (
@@ -29,7 +75,8 @@ const Home: React.FC = () => {
           height: "100%",
           display: "flex",
           width: "100%",
-          padding: "64px 16px 104px"
+          padding: "64px 0px 104px",
+          overflow: "hidden"
         }}
         bgcolor={theme.palette.primary.main}
       >
@@ -52,7 +99,7 @@ const Home: React.FC = () => {
             alignItems="center"
             spacing={4}
           >
-            <Grid item md={12} lg={9} xl={9}>
+            <Grid item md={12} lg={12} xl={9.5}>
               <Typography
                 sx={{
                   fontSize: "40px",
@@ -70,7 +117,7 @@ const Home: React.FC = () => {
               </Typography>
             </Grid>
 
-            <Grid item md={12} lg={9} xl={9}>
+            <Grid item md={10} lg={11} xl={9.5}>
               <Typography
                 variant="subtitle1"
                 sx={{
@@ -88,19 +135,7 @@ const Home: React.FC = () => {
                 fullWidth
                 InputProps={{
                   sx: {
-                    fontSize: "14px",
-                    "& input::-webkit-input-placeholder": {
-                      color: theme.palette.secondary.main
-                    },
-                    "& input::-moz-placeholder": {
-                      color: theme.palette.secondary.main
-                    },
-                    "& input::-ms-input-placeholder": {
-                      color: theme.palette.secondary.main
-                    },
-                    "& input::placeholder": {
-                      color: theme.palette.secondary.main
-                    }
+                    fontSize: "14px"
                   },
                   startAdornment: (
                     <TelegramIcon
@@ -136,7 +171,7 @@ const Home: React.FC = () => {
                       border: "2px solid black",
                       margin: "1px",
                       borderRadius: "100px",
-                      padding: "8px" // Adjust the gap between the border and the text
+                      padding: "8px"
                     }
                 }}
               />
@@ -160,11 +195,91 @@ const Home: React.FC = () => {
           </Grid>
         </Box>
       </Box>
+
+   
     </Fragment>
   );
 };
 
 export default Home;
+
+
+
+
+{/* <div style={{ overflowX: "hidden" }}>
+<div style={{}}></div>
+<AnimateKeyframes
+  play={true}
+  iterationCount="infinite"
+  duration={10}
+  keyframes={[
+    { 0: "transform-origin: 0"},
+    { 100: "transform-origin: 100%"}
+  ]}
+  // keyframes is an array of styles, and each style
+  // will be distributed over 100% of the duration
+>
+    <div
+    style={{
+      display: "flex",
+      flexWrap: "nowrap",
+      borderRadius: 1
+    }}
+  >
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+  </div>
+</AnimateKeyframes>
+</div> */}
+
+{/* <div style={{margin:"-48px 0 0"}} className="HomepageHero">
+
+</div> */}
+
+{/* <div className="one">
+<div className="test">
+  <div
+    style={{
+      display: "flex",
+      flexWrap: "nowrap",
+      borderRadius: 1
+    }}
+  >
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+    <div className="image-item">
+      <img src="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/b07158449c/sushi-wide.jpg" />
+    </div>
+  </div>
+</div>
+</div> */}
+
+
+
+
 
 // const isScreenSmall = useMediaQuery(theme.breakpoints.down(960));
 // const isScreenMedium = useMediaQuery(theme.breakpoints.down(1025));
